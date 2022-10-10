@@ -4,8 +4,7 @@ const app = express();
 app.get('/', (req, res) => {
   res
     .status(200)
-    .send('Hello server is running')
-    .end();
+    .sendFile(__dirname + '/index.html');
 });
  
 // Start the server
