@@ -10,6 +10,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const pages = ['Maps', 'Dive Sites', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -64,6 +65,7 @@ const NavBar = () => {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
+            <MenuIcon/>
             </IconButton>
             <Menu
               id="menu-appbar"
