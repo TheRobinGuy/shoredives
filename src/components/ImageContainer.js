@@ -17,7 +17,7 @@ const ImageContainer = () => {
                 <Grid xs={4}>
                     <Paper>
                         <p>Image Container Working</p>
-                        <img style={{ width: 500, height: 450 }} src={imageUrl}></img>   
+                        <img style={{ width: '100%' }} src={imageUrl}></img>   
                     </Paper>
                 </Grid>
             </Grid>
