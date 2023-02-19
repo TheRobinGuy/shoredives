@@ -35,7 +35,7 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar style={{ background: 'white', color: 'black' }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -65,7 +65,7 @@ const NavBar = () => {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-            <MenuIcon/>
+              <MenuIcon/>
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -82,14 +82,9 @@ const NavBar = () => {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none' }
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
             </Menu>
           </Box>
           <Typography
@@ -115,7 +110,7 @@ const NavBar = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'black', display: 'block' }}
               >
                 {page}
               </Button>
