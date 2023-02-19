@@ -167,7 +167,7 @@ const NavBar = () => {
         </Toolbar>
       </Container>
     </AppBar>
-      <Outlet />
+    <Outlet />
 </>
   );
 }

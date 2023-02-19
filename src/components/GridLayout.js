@@ -9,10 +9,14 @@ const GridLayout = () => {
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
                 <Grid xs={4}>
-                    <Paper></Paper>
+                    <Paper>
+                        <ImageContainer/>
+                    </Paper>
                 </Grid>
                 <Grid xs={4}>
-                    <Paper></Paper>
+                    <Paper>
+                        <ImageContainer/>
+                    </Paper>
                 </Grid>
                 <Grid xs={4}>
                     <Paper>
