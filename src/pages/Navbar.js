@@ -11,9 +11,13 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import { Outlet, Link } from "react-router-dom";
 
-const pages = ['Maps', 'Dive Sites', 'Blog'];
+
+const pages = ['Home', 'Maps', 'Dive Sites', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const PAGE_TITLE = "ShoreDives";
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -35,11 +39,13 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <>
+    <AppBar style={{ background: 'white', color: 'black' }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+
           <Typography
-            variant="h6"
+            variant="h5"
             noWrap
             component="a"
             href="/"
@@ -53,7 +59,7 @@ const NavBar = () => {
               textDecoration: 'none',
             }}
           >
-            ShoreDives
+            {PAGE_TITLE}
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -65,7 +71,7 @@ const NavBar = () => {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-            <MenuIcon/>
+              <MenuIcon/>
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -82,14 +88,9 @@ const NavBar = () => {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none' }
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
             </Menu>
           </Box>
           <Typography
@@ -115,9 +116,15 @@ const NavBar = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                style={{ my: 2, color: 'black', display: 'block' }}
               >
-                {page}
+              <Link
+                style={{textDecoration: 'none', color: 'inherit'}}
+                to={
+                page.toLowerCase() === 'home' ? "" : page.toLowerCase() === 'dive sites' ? "dive" : page.toLowerCase() 
+                }>
+                {page}              
+              </Link>
               </Button>
             ))}
           </Box>
@@ -146,7 +153,13 @@ const NavBar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography textAlign="center">
+                    <Link 
+                    style={{textDecoration: 'none', color: 'inherit'}}
+                    to={setting.toLowerCase}>
+                    {setting}
+                    </Link>
+                    </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -154,6 +167,8 @@ const NavBar = () => {
         </Toolbar>
       </Container>
     </AppBar>
+    <Outlet />
+</>
   );
 }
 export default NavBar;

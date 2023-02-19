@@ -1,21 +1,23 @@
 import './App.css';
-import GridLayout from './components/GridLayout';
-import NavBar from './components/Navbar';
-import Grid from '@mui/material/Unstable_Grid2';
+import NavBar from './pages/Navbar';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import NoPage from "./pages/NoPage";
+import DiveSites from './pages/DiveSites';
 
 function App() {
   return (
     <div className="App">
       <div className='bodyWrapper'>
-        <NavBar></NavBar>
-        <Grid container spacing={2}>
-          <Grid xs={12}>
-            <div>Banner Image Here</div>
-          </Grid>
-          <Grid xs={12}>
-            <GridLayout></GridLayout>
-          </Grid>
-        </Grid>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<NavBar />}>
+              <Route index element={<Home />} />
+              <Route path="dive" element={<DiveSites />} />
+              <Route path="*" element={<NoPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
       </div>
     </div>
   );
