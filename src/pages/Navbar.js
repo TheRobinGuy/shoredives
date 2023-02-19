@@ -118,7 +118,9 @@ const NavBar = () => {
                 onClick={handleCloseNavMenu}
                 style={{ my: 2, color: 'black', display: 'block' }}
               >
-              <Link to={
+              <Link
+                style={{textDecoration: 'none', color: 'inherit'}}
+                to={
                 page.toLowerCase() === 'home' ? "" : page.toLowerCase() === 'dive sites' ? "dive" : page.toLowerCase() 
                 }>
                 {page}              
@@ -151,7 +153,13 @@ const NavBar = () => {
             >
               {settings.map((setting) => (
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                  <Typography textAlign="center">
+                    <Link 
+                    style={{textDecoration: 'none', color: 'inherit'}}
+                    to={setting.toLowerCase}>
+                    {setting}
+                    </Link>
+                    </Typography>
                 </MenuItem>
               ))}
             </Menu>
