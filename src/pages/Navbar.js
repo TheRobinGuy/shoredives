@@ -11,9 +11,13 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import { Outlet, Link } from "react-router-dom";
 
-const pages = ['Maps', 'Dive Sites', 'Blog'];
+
+const pages = ['Home', 'Maps', 'Dive Sites', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const PAGE_TITLE = "ShoreDives";
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -35,11 +39,13 @@ const NavBar = () => {
   };
 
   return (
+    <>
     <AppBar style={{ background: 'white', color: 'black' }} position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+
           <Typography
-            variant="h6"
+            variant="h5"
             noWrap
             component="a"
             href="/"
@@ -53,7 +59,7 @@ const NavBar = () => {
               textDecoration: 'none',
             }}
           >
-            ShoreDives
+            {PAGE_TITLE}
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -110,9 +116,13 @@ const NavBar = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'black', display: 'block' }}
+                style={{ my: 2, color: 'black', display: 'block' }}
               >
-                {page}
+              <Link to={
+                page.toLowerCase() === 'home' ? "" : page.toLowerCase() === 'dive sites' ? "dive" : page.toLowerCase() 
+                }>
+                {page}              
+              </Link>
               </Button>
             ))}
           </Box>
@@ -149,6 +159,8 @@ const NavBar = () => {
         </Toolbar>
       </Container>
     </AppBar>
+      <Outlet />
+</>
   );
 }
 export default NavBar;
